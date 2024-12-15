@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckIcon,  } from "lucide-react";
+import { CheckIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Cookies from "js-cookie";
 
@@ -7,7 +7,10 @@ export const saveToken = (name: string, token: string) => {
   Cookies.set(name, token, { secure: true, sameSite: "strict", expires: 90 });
 };
 
-
+export const RemoveToken = () => {
+  Cookies.remove("access");
+  Cookies.remove("refresh");
+};
 
 export const ShowPassword = ({
   onClick,
@@ -36,5 +39,3 @@ export const ShowPassword = ({
     </button>
   );
 };
-
-

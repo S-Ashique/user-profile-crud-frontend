@@ -12,19 +12,35 @@ import Label from "../ui/label";
 import Input from "../ui/input";
 import { ShowPassword } from ".";
 import Button from "../ui/button";
+import {
+  RectangleEllipsisIcon,
+  RotateCwIcon,
+  XIcon,
+} from "lucide-react";
 import { UseMutationResult } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
-import { RotateCwIcon } from "lucide-react";
+import { TUpdateUserProfileData } from "../types";
 
 const ChangePassword = ({
   changePasswordQuery,
+  close,
+  forAuth = true,
 }: {
-  changePasswordQuery: UseMutationResult<
-    AxiosResponse<any, any>,
-    Error,
-    TChangePasswordSchema,
-    unknown
-  >;
+  changePasswordQuery:
+    | UseMutationResult<
+        AxiosResponse<{ message: string }, Error>,
+        Error,
+        TChangePasswordSchema,
+        unknown
+      >
+    | UseMutationResult<
+        { message: string },
+        Error,
+        TUpdateUserProfileData,
+        unknown
+      >;
+  close?: () => void;
+  forAuth?: boolean;
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -69,7 +85,17 @@ const ChangePassword = ({
           </div>
         ))}
         <ShowPassword onClick={changeVisibility} show={showPassword} />
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-8 gap-3">
+          {!forAuth && (
+            <Button
+              type="button"
+              variant={"destructive"}
+              disabled={changePasswordQuery.isPending}
+              onClick={close}
+            >
+              <XIcon /> Cancel
+            </Button>
+          )}
           <Button disabled={changePasswordQuery.isPending} type="submit">
             {changePasswordQuery.isPending ? (
               <>
@@ -77,7 +103,10 @@ const ChangePassword = ({
                 <span className="animate-pulse">Changing password ...</span>
               </>
             ) : (
-              "Reset password"
+              <>
+                {!forAuth && <RectangleEllipsisIcon />}
+                Reset password
+              </>
             )}
           </Button>
         </div>

@@ -8,7 +8,7 @@ const ForgotPassword = () => {
         Forgot your password?
       </h3>
       <p className="mb-6 font-medium text-base text-stone-950">
-        No worries, we'll send you reset instructions.
+        No worries, we&apos;ll send you reset instructions.
       </p>
       <ForgotPasswordForm />
     </>

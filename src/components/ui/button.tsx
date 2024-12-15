@@ -14,7 +14,7 @@ export const buttonVariants = cva(
           "text-white bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-red-400 via-rose-500 to-pink-600 focus-visible:ring-1 focus-visible:ring-offset-2 focus-visible:ring-red-500",
         link: "text-stone-950  underline-offset-4 hover:underline focus-visible:underline",
         ghost:
-          "bg-stone-100 text-stone-950 hover:bg-stone-200 focus-visible:bg-stone-200 focus-visible:ring-1 focus-visible:ring-offset-2 focus-visible:ring-stone-200  ",
+          "bg-stone-200 text-stone-950 hover:bg-stone-100 focus-visible:bg-stone-200 focus-visible:ring-1 focus-visible:ring-offset-2 focus-visible:ring-stone-200  ",
       },
       size: {
         default: "h-10 px-4 py-2",

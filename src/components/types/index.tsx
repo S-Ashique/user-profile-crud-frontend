@@ -1,3 +1,5 @@
+import { TChangePasswordSchema } from "../auth/form-data";
+
 export type TChildren = { children: React.ReactNode };
 
 export type TSignUpFormFields = {
@@ -26,3 +28,21 @@ export type TChangePasswordFields = {
   type: string;
   label: string;
 };
+
+export type Ttoken = {
+  exp?: number;
+  is_blocked?: boolean;
+} & TRoleParams;
+
+export type TModalProps = {
+  children: React.ReactNode;
+  isOpen: boolean;
+  variant?: "NavbarVariant" | "ModalVariant";
+};
+
+export type TUpdateUserProfileData =
+  | {
+      remove_profile_picture: boolean;
+    }
+  | FormData
+  | TChangePasswordSchema;
